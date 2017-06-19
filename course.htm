@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<script>
+var viewport = document.getElementById('viewport');
+if ( navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
+	document.write('<meta name="viewport" content="width=device-width, initial-scale=0.5, user-scalable=no, minimum-scale=0.5, maximum-scale=0.5">');
+} else if ( navigator.userAgent.match(/iPad/i) ) {
+	document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">');
+} else {
+	document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">');
+}
+</script>
+<title>MY NEW COURSE</title>
+<!-- Configuration -->
+<link rel="stylesheet" href="content/css/content.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="skin/skin.css" type="text/css" media="screen" />
+<link rel="apple-touch-icon-precomposed" href="skin/apple-touch-icon-precomposed.png" />
+<link rel="stylesheet" href="conf/template.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="assets/css/engine.css" type="text/css" media="screen" />
+<script type="text/javascript" src="conf/conf.js"></script>
+<script type="text/javascript" src="conf/conf_custom.js"></script>
+<script type="text/javascript" src="conf/langXML.js"></script>
+<!-- General/Util -->
+<script type="text/javascript" src="assets/js/global.js"></script>
+<script type="text/javascript" src="assets/js/lib/mootools-core-1.4.5-compatibility.js"></script>
+<script type="text/javascript" src="assets/js/lib/mootools-more-1.4.0.1-compatibility.js"></script>
+<script type="text/javascript" src="assets/js/lib/iscroll-lite-min.js?v4"></script>
+<script type="text/javascript" src="assets/js/objcookie.js"></script>
+<script type="text/javascript" src="assets/js/swfobject.js"></script>
+<script type="text/javascript" src="assets/js/utils.js"></script>
+<script type="text/javascript" src="assets/js/eventhandler.js"></script>
+<script type="text/javascript">
+
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+if( isMobile.any() )
+{
+	window.location = 'courseMobile.htm';//'courseAndroid.htm';	
+}
+
+</script>
+<!-- Comm Factory -->
+<script type="text/javascript" src="assets/js/comm-factory/ostynscormtime.js"></script>
+<script type="text/javascript" src="assets/js/comm-factory/scorm2004/comm-support.js"></script>
+<script type="text/javascript" src="assets/js/comm-factory/comm-factory-aicc.js"></script>
+<script type="text/javascript" src="assets/js/comm-factory/comm-factory-cookie.js"></script>
+<script type="text/javascript" src="assets/js/comm-factory/comm-factory-custom.js"></script>
+<script type="text/javascript" src="assets/js/comm-factory/comm-factory-scorm2004.js"></script>
+<script type="text/javascript" src="assets/js/comm-factory/comm-factory.js"></script>
+<!-- Core Classes -->
+<script type="text/javascript" src="assets/js/audio.js"></script>
+<script type="text/javascript" src="assets/js/audio-html5.js"></script>
+<script type="text/javascript" src="assets/js/ui.js"></script>
+<script type="text/javascript" src="assets/js/controller.js"></script>
+<script type="text/javascript" src="assets/js/engine.js"></script>
+<script type="text/javascript" src="assets/js/compliance.js"></script>
+<!-- Content Classes -->
+<script type="text/javascript" src="assets/js/page.js"></script>
+<script type="text/javascript" src="assets/js/branch.js"></script>
+<script type="text/javascript" src="assets/js/assessment/assessment.js"></script>
+<script type="text/javascript" src="assets/js/assessment/question/question.js"></script>
+<script type="text/javascript" src="assets/js/assessment/question/multichoice.js"></script>
+<script type="text/javascript" src="assets/js/assessment/question/truefalse.js"></script>
+<script type="text/javascript" src="assets/js/assessment/question/multicorrect.js"></script>
+<script type="text/javascript" src="assets/js/assessment/question/fillin.js"></script>
+<script type="text/javascript" src="assets/js/assessment/question/dragdrop_standard.js"></script>
+<script type="text/javascript" src="assets/js/assessment/question/dragdrop_snapback.js"></script>
+<script type="text/javascript" src="assets/js/assessment/question/dragdrop_manytoone.js"></script>
+<script type="text/javascript" src="assets/js/assessment/question/sim.js"></script>
+<!-- Course Structure -->
+<script type="text/javascript" src="conf/structureXML.js"></script>
+<!-- Initialization -->
+<script type="text/javascript" src="assets/js/init.js"></script>
+<script type="text/javascript" src="skin/baseskin.js"></script>
+<script type="text/javascript" src="skin/skin.js"></script>
+<!-- CSS -->
+
+</head>
+
+<body onhelp="return false;" class="uiCourseBackgroundColor" role="document">
+<div id="overlay"></div>
+<div id="overlay2"></div>
+<div id="loadingMessage" class="uiCourseTitleStyle">
+  <div id="loadingText"><img src="assets/img/loading.gif" width="16" height="16" border="0" alt=""> </div>
+</div>
+<div id="container" class="upper uiPageBackgroundColor">
+  <div id="header" class="uiPrimaryBackgroundColor" role="header">
+   <div id="logo"></div>
+   <div id="title" class="uiTextColor uiCourseTitleStyle" role="banner"></div>
+    <div id="exit" role="toolbar" aria-activedescendant="menuBtnLink">
+      <div id="exitBtn" class="uiSecondaryBackgroundColor">
+        <div id="UIexitButton" class="auxBtnContent" onClick="engine.displayExitPrompt();return false;" title="">
+                <div class="auxBtnLabel uiTextColor"> <a href="#" onClick="return false;" title="" role="button" tabindex="12"></a> </div>
+                <div class="auxBtnGraphic">
+                  <!--<img src="skin/exit.gif" border="0" alt="Exit">-->
+                </div>
+        </div>
+            </div>
+          </div>
+  </div>
+ 
+  
+    <div id="breadcrumb" class="uiSecondaryBackgroundColor">
+   
+        <div id="aux" role="toolbar" aria-activedescendant="menuBtnLink" class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+    
+            <div id="MainPage" class="nomargin auxBtn col-lg-3 col-md-2 col-sm-2 col-xs-12">
+                <div class="auxBtnContent" title="">
+                    <a href="#" onClick="menugo();return false;"  title="" role="button" tabindex="2"></a> 
+                </div>
+            </div>
+   
+            <div id="glossaryBtn" class="auxBtn nomargin col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                <div class="auxBtnContent" onClick="engine.openFloatPopupwindow(Conf.GLOSSARY_URL); openMenu(true);return false;" title="">
+                    <div class="auxBtnLabel uiTextColor"> <a href="#" onClick="return false;" title="" role="button" tabindex="4"></a> </div>
+                    <div class="auxBtnGraphic">
+                        <!--<img src="skin/open.gif" border="0" alt="Glossary">-->
+                    </div>
+                </div>
+            </div>
+            <div id="tscriptBtn" class="nomargin auxBtn col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                <div class="auxBtnContent" onClick="engine.ui.toggleTranscript(); openMenu(true);return false;" title="">
+                    <div class="auxBtnLabel uiTextColor"> <a href="#" onClick="engine.compliance.RemoveObjFromList('flashPage');return false;" title="" role="button" tabindex="2"></a> </div>
+                    <div class="auxBtnGraphic">
+                        <!--<img src="skin/open.gif" border="0" alt="Transcript">-->
+                    </div>
+                </div>
+            </div>
+            <div id="resourcesBtn" class="nomargin auxBtn col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                <div class="auxBtnContent" onclick="engine.openFloatPopupwindow(Conf.RESOURCES_URL);openMenu(true);return false;" title="">
+                    <div class="auxBtnLabel uiTextColor"> <a href="#" onclick="return false;" title="" role="button" tabindex="3"></a> </div>
+                    <div class="auxBtnGraphic">
+                        <!--<img src="skin/open.gif" border="0" alt="Resources">-->
+                    </div>
+                </div>
+            </div>
+            <div id="helpBtn" class="auxBtn nomargin col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                <div class="auxBtnContent" onClick="engine.openFloatPopupwindow(Conf.HELP_URL); openMenu(true);return false;" title="">
+                    <div class="auxBtnLabel uiTextColor"> <a href="#" onClick="return false;" title="" role="button" tabindex="5"></a> </div>
+                    <div class="auxBtnGraphic">
+                        <!--<img src="skin/open.gif" border="0" alt="Help">-->
+                    </div>
+                </div>
+            </div>
+            <div id="historyBtn" class="nomargin auxBtn uiSecondaryBackgroundColor col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="auxBtnContent" onClick="engine.ui.toggleHistory();return false;" title="">
+                    <div class="auxBtnLabel uiTextColor"> <a href="#" onClick="return false;" title="" role="button" tabindex="-1"></a> </div>
+                    <div class="auxBtnGraphic"> <img src="skin/history.gif" border="0" alt=""> </div>
+                </div>
+            </div>
+            <div id="menuBtn" class="auxBtn uiSecondaryBackgroundColor col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="auxBtnContent" onClick="engine.ui.toggleMenu();return false;" title="">
+                    <div class="auxBtnLabel uiTextColor"> <a id="menuBtnLink" href="#" onClick="return false;" title="" role="button" tabindex="-1"></a> </div>
+                    <div class="auxBtnGraphic"> <img src="skin/menu.gif" border="0" alt=""> </div>
+                </div>
+            </div>
+        </div>
+    
+        <div id="nav" role="toolbar" aria-activedescendant="menuBtnLink" class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+            <div role="navigation" aria-activedescendant="nextBtn">
+                <div id="nextBtn" class="navBtn">
+                    <div class="navBtnContent" onClick="engine.controller.next(); openMenu(true);return false;" title="">
+                        <div class="navBtnLabel uiTextColor"> <a href="#" id="nextBtnLink" onClick="return false;" title="" role="button" tabindex="7"></a> </div>
+                        <div class="navBtnGraphic">
+                            <!--<img src="skin/arrow_right.gif" border="0" alt="Navigate Forward">-->
+                        </div>
+                    </div>
+                </div>
+                <div id="pageLocation" class="navBtn uiSecondaryBackgroundColor">
+                    <div id="navPageLocationText" class="uiPageProgressTextStyle uiTextColor"></div>
+                </div>
+      
+                <div id="breadcrumbContent">
+                    <div id="breadcrumbText" class="uiSecondaryBackgroundColor uiSecondaryTextColor uiPageTitleStyle" aria-relevant="text" aria-live="polite" aria-atomic="true"></div>
+                </div>
+      
+                <div id="backBtn" class="navBtn">
+                    <div class="navBtnContent" onClick="engine.controller.back(); openMenu(true);return false;" title="">
+                        <div class="navBtnGraphic" aria-hidden="true">
+                            <!--<img src="skin/arrow_left.gif" border="0" alt="Navigate Back">-->
+                        </div>
+                        <div class="navBtnLabel uiTextColor"> <a href="#" onClick="return false;" title="" role="button" tabindex="6"></a> </div>
+                    </div>
+                </div>
+                <div id="returnBtn" class="navBtn" style="display:none;">
+                    <div class="navBtnContent" onClick="engine.closeSupportWin();return false;" title="">
+                        <div class="navBtnLabel uiTextColor"> <a href="#" id="nextBtnLink" onClick="return false;" title="" role="button" tabindex="7"></a> </div>
+                        <div class="navBtnGraphic">
+                            <!--<img src="skin/arrow_right.gif" border="0" alt="Navigate Forward">-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+    
+    </div>
+    <div id="topiclist">
+        <ul>
+            ##TopicsMenu_List##
+        </ul>
+    </div> 
+  
+  
+  <div id="aux2" role="toolbar" aria-activedescendant="menuBtnLink">
+    <div id="modulemenu" role="application" aria-activedescendant="mainmenu">
+    <div id="modmenuContent" aria-labelledby="menuLabel"></div>
+    <!--<ul id="modmenuMainMenu">
+      <li class="modmenuitem"><a href="#" class="modMenuLink" id="mainmenu" onClick="engine.controller.gotoPageByName(Conf.ModuleHome);return false;" title="Main Menu">RETURN TO MAIN MENU</a></li>
+    </ul>-->
+  </div>
+    <div id="modmenuClosedBtn" class="auxBtn">
+      <div class="auxBtnContent" onClick="engine.ui.toggleModMenu();return false;" title="">
+        <div class="auxBtnLabel uiTextColor"> <a id="modmenuBtnLink" href="#" onClick="return false;" title="" role="button" tabindex="8"></a> </div>
+        <div class="auxBtnGraphic">
+          <!--<img src="skin/menu.gif" border="0" alt="Menu"> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="round" class="uiPageBackgroundColor">
+    <iframe src="assets/htm/blank.htm" id="content" name="content" frameborder="0" scrolling="auto" aria-live="assertive" aria-atomic="true" role="main" tabindex="1"></iframe>
+    
+    <div id="transcript" role="dialog">
+    <div id="transcriptHeader" class="uiPrimaryBackgroundColor">
+      <div id="transcriptCloseBtn"> <a href="#" onClick="engine.ui.toggleTranscript();return false;" title=""> <img src="skin/close.png" border="0" alt=""> </a> </div>
+      <div id="transcriptHeaderText" class="uiPrimaryBackgroundColor uiSecondaryTextColor"></div>
+    </div>
+    <div id="transcriptContent">
+      <div id="transcriptText" aria-relevant="text"></div>
+    </div>
+  </div>
+    
+  </div>
+  
+  <div id="footer" class="uiPrimaryBackgroundColor"></div>
+  <div id="progress" role="status">
+    <div id="progressLabel" class="uiTextColor"></div>
+    <div id="progressBarBorder" class="uiSecondaryBackgroundColor">
+      <div id="progressBarFill"></div>
+    </div>
+    <div id="progressText" class="uiTextColor"></div>
+  </div>
+  <div id="audioControls" role="region" aria-activedescendant="audioPlayBtn" aria-labelledby="audioLabel">
+    <div id="audioLabel" class="uiTextColor"></div>
+    <div id="audioLoading"><img src="skin/audio_controls_loading.gif" border="0" alt=""></div>
+    <div id="audioPlayBtn"> <a href="#" onClick="engine.controller.audioTogglePlay();return false;" title="" role="button" tabindex="9"><img src="skin/play.png" border="0" alt=""></a> </div>
+    <div id="audioPauseBtn"> <a href="#" onClick="engine.controller.audioTogglePlay();return false;" title="" role="button" tabindex="9"><img src="skin/pause.png" border="0" alt=""></a> </div>
+    <div id="audioStopBtn"> <a href="#" onClick="engine.controller.audioStop();return false;" title="" role="button" tabindex="10"><img src="skin/restart.png" border="0" alt=""></a> </div>
+    <div id="audioDisableBtn"> <a href="#" onClick="engine.controller.audioToggleEnabled();return false;" title="" role="button" tabindex="11"><img src="skin/sound.png" border="0" alt=""></a> </div>
+    <div id="audioEnableBtn"> <a href="#" onClick="engine.controller.audioToggleEnabled();return false;" title="" role="button" tabindex="11"><img src="skin/mute.png" border="0" alt=""></a> </div>
+    <div id="transcriptBtn"> <a href="#" onClick="engine.ui.toggleTranscript();return false;" title="" role="button" tabindex="12"><img src="skin/audio_transcript.gif" border="0" alt=""></a> </div>
+    <div id="audioPosition" class="uiTextColor" role="timer"></div>
+  </div>
+  <div id="menu" role="application" aria-activedescendant="closeMenu">
+    <div id="menuHeader" class="uiPrimaryBackgroundColor">
+      <div class="menuHeaderContent">
+        <div id="menuLabel" class="menuHeaderLabel uiTextColor"></div>
+        <div class="menuHeaderBtn uiTextColor" id="menuLabel_close"><a href="#" onClick="engine.ui.hideMenu();return false;" title="" id="closeMenu" role="button"><img src="skin/close.gif" border="0" alt=""></a></div>
+        <div class="menuHeaderBtn uiTextColor" id="menuLabel_skip"><a href="#" class="skipSection" onClick="engine.ui.skipMenu();return false;" title=""></a></div>
+        <div class="menuHeaderBtn uiTextColor" id="menuLabel_Collapse"><a href="#" onClick="engine.ui.menuCollapseAll();return false;" role="button" title=""></a></div>
+        <div class="menuHeaderBtn uiTextColor" id="menuLabel_Expand"><a href="#" onClick="engine.ui.menuExpandAll();return false;" role="button" title=""></a></div>
+      </div>
+    </div>
+    <div id="menuContent" aria-labelledby="menuLabel"></div>
+  </div>
+
+  <div id="history" role="application" aria-activedescendant="closeHistory">
+    <div id="historyHeader" class="uiPrimaryBackgroundColor">
+      <div class="menuHeaderContent">
+        <div class="menuHeaderLabel uiTextColor" id="historyLabel"></div>
+        <div class="menuHeaderBtn uiTextColor" id="historyHeader_close"><a href="#" onClick="engine.ui.hideHistory();return false;" title="" id="closeHistory" role="button"><img src="skin/close.gif" border="0" alt=""></a></div>
+        <div class="menuHeaderBtn uiTextColor" id="historyHeader_skip"><a href="#" class="skipSection" onClick="engine.ui.skipMenu();return false;" title="" role="button"></a></div>
+      </div>
+    </div>
+    <div id="historyContent" role="listbox" aria-labelledby="historyLabel"></div>
+  </div>
+</div>
+<div id="audioContainer" aria-hidden="true" tabindex="-1"></div>
+<div id="accessibilityCheckContainer" aria-hidden="true" tabindex="-1"></div>
+<div id="noFlash">
+  <div id="noFlashHeader">
+    <div id="noFlashCloseBtn"> <a href="#" onClick="Utils.flash.closeWarning();return false;"> <img src="skin/close.gif" border="0" alt=""> </a> </div>
+    <div id="noFlashHeaderText"></div>
+  </div>
+  <div id="noFlashContent">
+    <div class="flashLogo"><img src="assets/img/flashplayer_100x100.jpg" width="100" height="100" border="0" alt="" title=""></div>
+    <p><span id="flashWarningItAppears"></span></p>
+    <p><span id="flashWarningContactYourAdmin"></span></p>
+    <div class="flashVersionFeedback">
+      <p> <span id="flashWarningCurrentVersion"></span>: <span id="flashCurrentVersion"></span><br>
+        <span id="flashWarningRequiredVersion"></span>: <span id="flashRequiredVersion"></span> </p>
+    </div>
+    <p><a href="http://get.adobe.com/flashplayer/" target="_new"><span id="flashWarningClickHereToInstall"></span></a></p>
+    <p><span id="flashWarningDoNotShowAgain"></span></p>
+  </div>
+</div>
+<div id="iosAudioPrompt" aria-hidden="true">
+  <div class="iosAudioPromptHeader"></div>
+  <div class="iosAudioPromptContent"></div>
+  <div class="iosAudioPromptPointer"></div>
+</div>
+<!-- Begin AICC support -->
+<div id="aiccclient"></div>
+<div id="aiccserver"></div>
+<iframe name="aiccinit" id="aiccinit" src="assets/htm/blank.htm" width="0" height="0" tabindex="-1" style="display:none" aria-hidden="true"></iframe>
+<form name="ensureExit" action="" method="POST" target="aiccinit" style="display:none" aria-hidden="true">
+  <input type="hidden" name="command" value="exitau" />
+  <input type="hidden" name="version" value="2.0" />
+  <input type="hidden" name="session_id" value="" />
+</form>
+<!-- End AICC support -->
+
+<script type="text/javascript" src="content/js/jquery.js"></script>
+    <script type="text/javascript" src="conf/custom_message.js"></script>
+    <script type="text/javascript">
+        function menugo() {
+            if (moduledroplist == true) { openMenu(); }
+            else {
+                engine.controller.gotoPageByName(Conf.ModuleHome);
+            }
+        }
+
+        function openMenu(e) {
+            var element = document.getElementById('topiclist');
+            if (e == true) {
+                element.setAttribute("class", "");
+            } else {
+                if ((" " + element.className + " ").replace(/[\n\t]/g, " ").indexOf("open") > -1) {
+                    element.setAttribute("class", "");
+                } else {
+                    element.setAttribute("class", "open");
+                }
+
+            }
+        }
+        function gotoPage(pagename) {
+
+            if (forcelearning) {
+
+                if (engine.controller.getPageByName(pagename).visited) {
+                    engine.controller.gotoPageByName(pagename);
+                }
+
+            } else {
+                engine.controller.gotoPageByName(pagename);
+            }
+
+        }
+    </script>
+
+</body>
+</html>
